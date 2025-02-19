@@ -22,4 +22,4 @@ jobs:
           scope: ${{ secrets.ORG_ID }}
       - name: preview-url
         run: |
-          echo ${{ steps.vercel-deploy.outputs.preview-url }} >> $GITHUB_OUTPUT
+          echo ${{ steps.vercel-deploy.outputs.preview-url }}
