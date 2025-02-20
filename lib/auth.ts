@@ -27,8 +27,6 @@ export const authOptions: NextAuthOptions  = {
           user.password
         );
 
-        console.log(user.password, credentials!.password)
-
         if(!password) return null
 
           return {id: user.email, name: user.name}
