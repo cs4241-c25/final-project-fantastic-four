@@ -1,5 +1,5 @@
 import {MongoClient} from "mongodb";
-import {NextRequest, NextResponse} from 'next/server';
+import {NextResponse} from 'next/server';
 
 const client = new MongoClient(process.env.DB_URL!)
 let events = null
