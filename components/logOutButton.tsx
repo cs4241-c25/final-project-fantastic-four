@@ -13,9 +13,7 @@ export default function LogOutButton() {
   return (
     <>
       <Button onClick={() => signOut()}>
-        Log Out
-        <br/>
-        {data.user!.name}
+        Log Out<b> {data.user!.name}</b>
       </Button>
     </>
   );

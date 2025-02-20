@@ -1,7 +1,7 @@
 import { User } from "next-auth"
 import { useRouter } from "next/navigation"
 import React from "react"
-import { Button, Card, CardGroup } from "react-bootstrap"
+import { Button, Col, ListGroup, Row } from "react-bootstrap"
 
 export const MemberList = () => {
     const [data, setData] = React.useState([] as User[])
@@ -31,18 +31,18 @@ export const MemberList = () => {
     }, [])
 
     return(
-        <CardGroup>
-            {data.filter((user) => user.name != 'admin').map(({name, email}) => (
-                <Card key={email}>
-                    <Card.Body>
-                        <Card.Title>{name}</Card.Title>
-                        <Card.Text>
-                            {email}
-                        </Card.Text>
-                        <Button>Revoke List Access</Button>
-                    </Card.Body>
-                </Card>
-            ))}
-        </CardGroup>
+        <ListGroup>
+                {data.filter((user) => user.name != 'admin').map(({name, email}) => (
+                    <ListGroup.Item key={email}>
+                        <Row>
+                            <Col as='b'>{name}</Col>
+                            <Col>{email}</Col>
+                            <Col>
+                                <Button>Revoke List Access</Button>
+                            </Col>
+                        </Row>
+                    </ListGroup.Item>
+                ))}
+        </ListGroup>
     );
 }
