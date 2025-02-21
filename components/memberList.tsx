@@ -1,7 +1,7 @@
-import { User } from "next-auth"
 import { useRouter } from "next/navigation"
 import React from "react"
 import { Button, Col, ListGroup, Row } from "react-bootstrap"
+import {User} from '@/types/user'
 
 export const MemberList = () => {
     const [data, setData] = React.useState([] as User[])
@@ -30,15 +30,28 @@ export const MemberList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    const approve = () => {
+        return
+    }
+
+    const revoke = () => {
+        return
+    }
+
     return(
         <ListGroup>
-                {data.filter((user) => user.name != 'admin').map(({name, email}) => (
+                {data.map(({name, email, verified}) => (
                     <ListGroup.Item key={email}>
                         <Row>
                             <Col as='b'>{name}</Col>
                             <Col>{email}</Col>
+                            <Col>{verified ? 
+                                <Button onClick={approve()}>Approve List Access</Button> : 
+                                <Button onClick={revoke()}>Revoke List Access</Button>
+                                }
+                            </Col>
                             <Col>
-                                <Button>Revoke List Access</Button>
+                                <Button>Delete User</Button>
                             </Col>
                         </Row>
                     </ListGroup.Item>

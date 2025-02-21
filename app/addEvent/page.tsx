@@ -1,7 +1,7 @@
 'use client'
 import { Form, Button } from 'react-bootstrap/'
 import React, { useState } from 'react'
-import Event from '../../lib/event'
+import Event from '../../types/event'
 
 export default function Home() {
     const [eventName, setEventName] = useState('');

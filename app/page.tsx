@@ -1,7 +1,7 @@
 'use client'
 import {ListGroup} from 'react-bootstrap'
 import {useEffect, useState} from "react";
-import Event from '../lib/event';
+import Event from '../types/event';
 
 export default function Home() {
   const [events, setEvents] = useState<Event[]>([])
