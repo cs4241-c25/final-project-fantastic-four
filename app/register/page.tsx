@@ -1,6 +1,7 @@
 'use client'
 import { Form, Button, Alert } from 'react-bootstrap'
 import React from 'react'
+import Link from 'next/link'
 
 export default function Register() {
     const [message, setMessage] = React.useState('')
@@ -58,6 +59,7 @@ export default function Register() {
                 </div>
                 {message ? <Alert>{message}</Alert> : ''}
             </Form>
+            Already have an account?<Link href='/signin'> Sign In</Link>
         </>
     );
 }

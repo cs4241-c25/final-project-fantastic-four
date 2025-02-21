@@ -8,7 +8,7 @@ export default function Home() {
     const [eventName, setEventName] = useState('');
     const [eventDate, setEventDate] = useState('');
     const router = useRouter();
-    
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const newEvent: Event = {

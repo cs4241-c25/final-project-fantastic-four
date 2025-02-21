@@ -4,7 +4,7 @@ import {User} from '@/types/user'
 
 export const MemberList = () => {
     const [data, setData] = React.useState([] as User[])
-
+    
     const getUsers = async () => {
         const response = await fetch('/api/users', {
             headers: {
