@@ -1,6 +1,6 @@
 'use client'
 import { Form, Button } from 'react-bootstrap'
-import React from 'react'
+import React, { Suspense } from 'react'
 import Link from 'next/link'
 import { getCsrfToken } from 'next-auth/react'
 import { SignInError } from '@/components/signInError'
@@ -32,7 +32,9 @@ export default function SignIn() {
                     <Form.Control name="password" type="password"/>
                 </Form.Group>
                 <Button variant="primary" type="submit">Submit</Button>
-                <SignInError/>
+                <Suspense>
+                    <SignInError/>
+                </Suspense>
             </Form>
             {'Dont have an account?'}<Link href='/register'> Register</Link>
         </>

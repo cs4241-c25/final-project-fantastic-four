@@ -1,5 +1,5 @@
 import { useSearchParams } from "next/navigation"
-import React, { Suspense } from "react"
+import React from "react"
 
 export const SignInError = () => {
     const [err, setErr] = React.useState('')
@@ -13,10 +13,8 @@ export const SignInError = () => {
     }, [searchParams])
 
     return (
-        <Suspense>
-            <div className='text-warning'>
-                {err}
-            </div>
-        </Suspense>
+        <div className='text-warning'>
+            {err}
+        </div>
     )
 }
