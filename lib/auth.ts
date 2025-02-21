@@ -21,6 +21,7 @@ export const authOptions: NextAuthOptions  = {
         client.close()
 
         if(!user) return null
+        if(!user.verified) return null
 
         const password = await bcrypt.compare(
           credentials!.password,
