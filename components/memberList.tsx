@@ -1,11 +1,9 @@
-import { useRouter } from "next/navigation"
 import React from "react"
 import { Button, Col, ListGroup, Row } from "react-bootstrap"
 import {User} from '@/types/user'
 
 export const MemberList = () => {
     const [data, setData] = React.useState([] as User[])
-    const router = useRouter()
     
     const getUsers = async () => {
         const response = await fetch('/api/users', {
@@ -13,11 +11,6 @@ export const MemberList = () => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }})
-
-            if(response.status == 403){
-                router.replace('/')
-                return
-            }
 
             if(response.status == 200){
                 const users = await response.json()
@@ -27,7 +20,6 @@ export const MemberList = () => {
 
     React.useEffect(() => {
         getUsers()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return(
