@@ -20,7 +20,7 @@ export default function Home() {
     <>
       <ListGroup>
         {events.map((event) => (
-            <ListGroup.Item key={event._id.toString()}>
+            <ListGroup.Item key={event.name}>
               <h2>{event.name}</h2>
               <p>Date: {event.date}</p>
               <p>{event.isActive? "Active" : "Not Active"}</p>
