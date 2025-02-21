@@ -2,10 +2,12 @@
 import { Form, Button } from 'react-bootstrap/'
 import React, { useState } from 'react'
 import Event from '../../types/event'
+import {useRouter} from 'next/navigation'
 
 export default function Home() {
     const [eventName, setEventName] = useState('');
     const [eventDate, setEventDate] = useState('');
+    const router = useRouter();
     
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -24,7 +26,7 @@ export default function Home() {
             }
             const result = await response.json();
             console.log(`Result: ${result}`);
-            window.location.replace('/');
+            router.push('/');
         } catch (error) {
             console.error('Error adding event:', error);
         }
