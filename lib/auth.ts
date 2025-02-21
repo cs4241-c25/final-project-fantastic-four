@@ -13,6 +13,7 @@ export const authOptions: NextAuthOptions  = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        console.log(credentials)
         const client = new MongoClient(process.env.DB_URL!)
         await client.connect()
         const users = await client.db('fantastic-four').collection('users')
@@ -34,6 +35,9 @@ export const authOptions: NextAuthOptions  = {
       },
     }),
   ],
+  pages: {
+    signIn: '/signin'
+  },
   session: {
     strategy: "jwt",
   }
