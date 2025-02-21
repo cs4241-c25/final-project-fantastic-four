@@ -30,14 +30,6 @@ export const MemberList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const approve = () => {
-        return
-    }
-
-    const revoke = () => {
-        return
-    }
-
     return(
         <ListGroup>
                 {data.map(({name, email, verified}) => (
