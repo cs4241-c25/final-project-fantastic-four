@@ -46,8 +46,8 @@ export const MemberList = () => {
                             <Col as='b'>{name}</Col>
                             <Col>{email}</Col>
                             <Col>{verified ? 
-                                <Button onClick={approve()}>Approve List Access</Button> : 
-                                <Button onClick={revoke()}>Revoke List Access</Button>
+                                <Button>Approve List Access</Button> : 
+                                <Button>Revoke List Access</Button>
                                 }
                             </Col>
                             <Col>
