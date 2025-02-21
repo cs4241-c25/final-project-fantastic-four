@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar, NavbarBrand, NavbarCollapse, NavbarToggle, NavLink } from "react-bootstrap"
-import LogOutButton from "@/components/logOutButton"
+import LogOutButton from "@/components/logButton"
 
 export const SiteNav = () => (
     <Navbar expand="lg">
@@ -10,6 +10,7 @@ export const SiteNav = () => (
         <Nav>
           <NavLink href="/">Home</NavLink>
           <NavLink href="/admin">Admin</NavLink>
+          <NavLink href="/register">Register</NavLink>
         </Nav>
       </NavbarCollapse>
       <LogOutButton/>

@@ -5,7 +5,6 @@ import { getServerSession } from "next-auth";
 
 const handler = async () => {
     const session = await getServerSession(authOptions)
-    console.log(session?.user!.name)
     if(!session || !(session.user!.name == 'admin')){
       return NextResponse.json({}, {status: 403})
     }

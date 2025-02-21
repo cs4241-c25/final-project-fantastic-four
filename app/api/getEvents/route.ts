@@ -7,6 +7,5 @@ let events = null
 export async function GET() {
     await client.connect();
     events = await client.db("fantastic-four").collection("events").find().toArray();
-    console.log(events);
     return NextResponse.json(events, { status: 200 });
 }
