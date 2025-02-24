@@ -13,7 +13,13 @@ const handler = async () => {
     await client.connect()
     const userDB = await client.db('fantastic-four').collection('users')
 
-    const users = await userDB.find().toArray()
+    const users = await userDB.find().project({
+      _id: 1,
+      name: 1,
+      email: 1,
+      verified: 1,
+      access: 1
+    }).toArray()
     client.close()
 
     return NextResponse.json(users, {status: 200})
