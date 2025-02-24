@@ -29,24 +29,37 @@ export const MemberList = () => {
         }
     }
 
+    const verifyUser = async (email: string) => {
+        const response = await fetch('/api/verify', {
+            method: 'POST',
+            body: JSON.stringify({"email": email})
+        });
+
+        if (response.ok) {
+            await getUsers();
+        }
+    }
+
     React.useEffect(() => {
         getUsers()
     }, [])
 
     return(
         <ListGroup>
-                {data.map(({name, email, verified}) => (
+                {data.map(({name, email, verified, access}) => (
                     <ListGroup.Item key={email}>
                         <Row>
                             <Col as='b'>{name}</Col>
                             <Col>{email}</Col>
                             <Col>{verified ? 
-                                <Button onClick={() => changeAccess(email)}>Revoke List Access</Button> :
-                                <Button onClick={() => changeAccess(email)}>Approve List Access</Button>
+                                access ? 
+                                    <Button onClick={() => changeAccess(email)}>Revoke List Access</Button> :
+                                    <Button onClick={() => changeAccess(email)}>Approve List Access</Button> :
+                                    <Button variant='outline-primary' onClick={() => verifyUser(email)}>Verify User</Button>
                                 }
                             </Col>
                             <Col>
-                                <Button>Delete User</Button>
+                                <Button variant="danger">Delete User</Button>
                             </Col>
                         </Row>
                     </ListGroup.Item>

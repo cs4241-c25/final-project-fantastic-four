@@ -14,12 +14,12 @@ export default function Home() {
 
     if(data?.user!.name != 'admin'){
       router.push('/')
+    }else{
+      return (
+        <>
+            <AddEventButton/>
+            <MemberList/>
+        </>
+      );
     }
-
-  return (
-    <>
-        <AddEventButton/>
-        <MemberList/>
-    </>
-  );
 }
