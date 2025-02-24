@@ -5,7 +5,7 @@ const client = new MongoClient(process.env.DB_URL!)
 
 export async function GET(){
     await client.connect(); 
-    let guests = await client.db("fantastic-four").collection("guests").find().toArray();
+    const guests = await client.db("fantastic-four").collection("guests").find().toArray();
     return NextResponse.json(guests, { status: 200 });
 }
     
