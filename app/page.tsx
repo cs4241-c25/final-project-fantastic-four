@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>
       <ListGroup>
-        {events.map((event) => (
+        {events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((event) => (
             <ListGroup.Item key={event.name}>
               <h2>{event.name}</h2>
               <p>Date: {event.date}</p>
