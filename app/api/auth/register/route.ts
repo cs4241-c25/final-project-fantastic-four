@@ -12,6 +12,7 @@ const handler = async (req: NextRequest) => {
     data.admin = false
     data.verified = false
     data.access = false
+    data.role = 'member'
     data.password = await bcrypt.hash(data.password, 10)
 
     const exists = await userDB.findOne({email: data.email})

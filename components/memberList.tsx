@@ -72,7 +72,7 @@ export const MemberList = () => {
                     <ListGroup.Item key={email}>
                         <Row>
                             <Col as='b'>{name}</Col>
-                            <Col>{email}</Col>
+                            <Col sm={3}>{email}</Col>
                             <Col>{verified ? 
                                 access ? 
                                     <Button onClick={() => changeAccess(email)}>Revoke List Access</Button> :
