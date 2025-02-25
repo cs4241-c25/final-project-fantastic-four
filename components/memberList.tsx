@@ -1,5 +1,5 @@
 import React from "react"
-import { Button, Col, ListGroup, Row } from "react-bootstrap"
+import { Button, Col, Form, ListGroup, Row } from "react-bootstrap"
 import {User} from '@/types/user'
 
 export const MemberList = () => {
@@ -51,13 +51,24 @@ export const MemberList = () => {
         }
     }
 
+    const setRole = async (email: string, role: string) => {
+        const response = await fetch('/api/users/setRole', {
+            method: 'POST',
+            body: JSON.stringify({"email": email, "role": role})
+        });
+
+        if (response.ok) {
+            await getUsers();
+        }
+    }
+
     React.useEffect(() => {
         getUsers()
     }, [])
 
     return(
         <ListGroup>
-                {data.map(({name, email, verified, access}) => (
+                {data.map(({name, email, verified, access, role}) => (
                     <ListGroup.Item key={email}>
                         <Row>
                             <Col as='b'>{name}</Col>
@@ -68,6 +79,13 @@ export const MemberList = () => {
                                     <Button onClick={() => changeAccess(email)}>Approve List Access</Button> :
                                     <Button variant='outline-primary' onClick={() => verifyUser(email)}>Verify User</Button>
                                 }
+                            </Col>
+                            <Col>
+                                <Form.Select defaultValue={role} onChange={(e) => setRole(email, e.target.value)}>
+                                    <option value="admin">Admin</option>
+                                    <option value="member">Member</option>
+                                    <option value="door">Door</option>
+                                </Form.Select>
                             </Col>
                             <Col>
                                 <Button variant="danger" onClick={() => delUser(email)}>Delete User</Button>

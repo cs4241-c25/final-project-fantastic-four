@@ -9,13 +9,13 @@ let user = null
 export async function POST(request: Request) {
     const session = await getServerSession(authOptions)
     if(!session || !(session.user!.role == 'admin')){
-        return NextResponse.json({}, {status: 403})
+      return NextResponse.json({}, {status: 403})
     }
     
     await client.connect();
     user = await client.db("fantastic-four").collection("users");
-    const {email} = await request.json();
-    const result = await user.findOneAndUpdate({"email": email}, [{ $set: { verified: true}}]);
+    const {email, role} = await request.json();
+    const result = await user.findOneAndUpdate({"email": email}, [{ $set: { role: role}}]);
 
     if (result) {
         return NextResponse.json({status: "success"}, {status: 201});
