@@ -19,7 +19,7 @@ export const MemberList = () => {
     }
 
     const changeAccess = async (email: string) => {
-        const response = await fetch('/api/access', {
+        const response = await fetch('/api/users/access', {
             method: 'POST',
             body: JSON.stringify({"email": email})
         });
@@ -30,7 +30,18 @@ export const MemberList = () => {
     }
 
     const verifyUser = async (email: string) => {
-        const response = await fetch('/api/verify', {
+        const response = await fetch('/api/users/verify', {
+            method: 'POST',
+            body: JSON.stringify({"email": email})
+        });
+
+        if (response.ok) {
+            await getUsers();
+        }
+    }
+
+    const delUser = async (email: string) => {
+        const response = await fetch('/api/users/delete', {
             method: 'POST',
             body: JSON.stringify({"email": email})
         });
@@ -59,7 +70,7 @@ export const MemberList = () => {
                                 }
                             </Col>
                             <Col>
-                                <Button variant="danger">Delete User</Button>
+                                <Button variant="danger" onClick={() => delUser(email)}>Delete User</Button>
                             </Col>
                         </Row>
                     </ListGroup.Item>
