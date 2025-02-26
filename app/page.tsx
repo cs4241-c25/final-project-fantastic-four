@@ -1,6 +1,7 @@
 'use client'
 import {ListGroup, Button, Col, Row} from 'react-bootstrap'
 import {useEffect, useState} from "react";
+import Event from '../types/event';
 import { useSession } from "next-auth/react";
 
 export default function Home() {
