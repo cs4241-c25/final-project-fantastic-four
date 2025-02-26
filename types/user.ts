@@ -1,6 +1,7 @@
 export interface User{
     name: string,
     email: string,
-    admin: boolean,
-    verified: boolean
+    role: string,
+    verified: boolean,
+    access: boolean
 }

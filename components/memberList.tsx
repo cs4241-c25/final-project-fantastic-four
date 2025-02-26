@@ -1,5 +1,5 @@
 import React from "react"
-import { Button, Col, ListGroup, Row } from "react-bootstrap"
+import { Button, Col, Form, ListGroup, Row } from "react-bootstrap"
 import {User} from '@/types/user'
 
 export const MemberList = () => {
@@ -10,12 +10,56 @@ export const MemberList = () => {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }})
+            }});
 
             if(response.status == 200){
                 const users = await response.json()
                 setData(users)
             }
+    }
+
+    const changeAccess = async (email: string) => {
+        const response = await fetch('/api/users/access', {
+            method: 'POST',
+            body: JSON.stringify({"email": email})
+        });
+
+        if (response.ok) {
+            await getUsers();
+        }
+    }
+
+    const verifyUser = async (email: string) => {
+        const response = await fetch('/api/users/verify', {
+            method: 'POST',
+            body: JSON.stringify({"email": email})
+        });
+
+        if (response.ok) {
+            await getUsers();
+        }
+    }
+
+    const delUser = async (email: string) => {
+        const response = await fetch('/api/users/delete', {
+            method: 'POST',
+            body: JSON.stringify({"email": email})
+        });
+
+        if (response.ok) {
+            await getUsers();
+        }
+    }
+
+    const setRole = async (email: string, role: string) => {
+        const response = await fetch('/api/users/setRole', {
+            method: 'POST',
+            body: JSON.stringify({"email": email, "role": role})
+        });
+
+        if (response.ok) {
+            await getUsers();
+        }
     }
 
     React.useEffect(() => {
@@ -24,18 +68,27 @@ export const MemberList = () => {
 
     return(
         <ListGroup>
-                {data.map(({name, email, verified}) => (
+                {data.map(({name, email, verified, access, role}) => (
                     <ListGroup.Item key={email}>
                         <Row>
-                            <Col as='b'>{name}</Col>
-                            <Col>{email}</Col>
+                            <Col as='b' sm={2}>{name}</Col>
+                            <Col sm={2}>{email}</Col>
                             <Col>{verified ? 
-                                <Button>Approve List Access</Button> : 
-                                <Button>Revoke List Access</Button>
+                                access ? 
+                                    <Button variant='danger' onClick={() => changeAccess(email)}>Revoke</Button> :
+                                    <Button variant='success' onClick={() => changeAccess(email)}>Approve</Button> :
+                                    <Button variant='outline-primary' onClick={() => verifyUser(email)}>Verify User</Button>
                                 }
                             </Col>
                             <Col>
-                                <Button>Delete User</Button>
+                                <Form.Select defaultValue={role} onChange={(e) => setRole(email, e.target.value)}>
+                                    <option value="admin">Admin</option>
+                                    <option value="member">Member</option>
+                                    <option value="door">Door</option>
+                                </Form.Select>
+                            </Col>
+                            <Col>
+                                <Button variant="danger" onClick={() => delUser(email)}>Delete</Button>
                             </Col>
                         </Row>
                     </ListGroup.Item>
