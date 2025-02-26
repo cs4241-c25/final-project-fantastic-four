@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import { DefaultSession, DefaultUser, NextAuthOptions } from "next-auth";
 import { DefaultJWT } from "next-auth/jwt";
 import credentials from "next-auth/providers/credentials";
@@ -7,12 +7,16 @@ import credentials from "next-auth/providers/credentials";
 declare module "next-auth" {
   interface Session extends DefaultSession{
     user: {
+      id: ObjectId
+      email: string
+      name: string
       role: string
-    } & DefaultSession['user']
+    }
   }
 
   interface User extends DefaultUser {
-    id: string
+    id: ObjectId
+    email: string
     name: string
     role: string
   }
@@ -20,7 +24,8 @@ declare module "next-auth" {
 
 declare module "next-auth/jwt" {
   interface JWT extends DefaultJWT {
-    id: string
+    id: ObjectId
+    email: string
     name: string
     role: string
   }
@@ -53,7 +58,7 @@ export const authOptions: NextAuthOptions  = {
 
         if(!password) return null
 
-        return {id: user.email, name: user.name, role: user.role}
+        return {id: user._id, email: user.email, name: user.name, role: user.role}
       },
     }),
   ],

@@ -55,7 +55,7 @@ export default function Home() {
                     <Col><Button
                         onClick={() => activate(event._id.toString())}>{event.isActive ? "Deactivate" : "Activate"}</Button></Col>
                     : <Col><p>{event.isActive ? "Active" : "Not Active"}</p></Col>}
-                <Col><p>Time: {moment(event.time, 'hh:mm').format('hh:mm a')}</p></Col>
+                <Col><p>{moment(event.time, 'hh:mm').format('hh:mm a')}</p></Col>
                 <Col>{data?.user!.role === 'admin' ? 
                   <Button variant='danger' onClick={() => delEvent(event._id)}>Delete</Button> : ''}
                 </Col>
