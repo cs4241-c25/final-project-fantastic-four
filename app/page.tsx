@@ -4,13 +4,14 @@ import {useEffect, useState} from "react";
 import Event from '../types/event';
 import moment from 'moment';
 import { useSession } from "next-auth/react";
+import { ObjectId } from 'mongodb';
 
 export default function Home() {
   const [events, setEvents] = useState<Event[]>([])
   const { data } = useSession()
 
   async function getEvents() {
-    const response = await fetch('api/getEvents');
+    const response = await fetch('/api/events');
     const data = await response.json();
     setEvents(data);
   }
@@ -20,7 +21,7 @@ export default function Home() {
   }, []);
 
   const activate = async (id: string) => {
-    const response = await fetch('/api/activate', {
+    const response = await fetch('/api/events/activate', {
       method: 'POST',
       body: JSON.stringify({"id": id})
     });
@@ -29,6 +30,17 @@ export default function Home() {
       await getEvents();
     }
   }
+
+  const delEvent = async (_id: ObjectId) => {
+    const response = await fetch('/api/events/delete', {
+      method: 'POST',
+      body: JSON.stringify({"_id": _id})
+    });
+
+    if (response.ok) {
+      await getEvents();
+    }
+  } 
 
   return (
     <>
@@ -44,6 +56,9 @@ export default function Home() {
                         onClick={() => activate(event._id.toString())}>{event.isActive ? "Deactivate" : "Activate"}</Button></Col>
                     : <Col><p>{event.isActive ? "Active" : "Not Active"}</p></Col>}
                 <Col><p>Time: {moment(event.time, 'hh:mm').format('hh:mm a')}</p></Col>
+                <Col>{data?.user!.role === 'admin' ? 
+                  <Button variant='danger' onClick={() => delEvent(event._id)}>Delete</Button> : ''}
+                </Col>
               </Row>
             </ListGroup.Item>
         ))}

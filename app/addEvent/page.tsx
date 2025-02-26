@@ -18,7 +18,7 @@ export default function Home() {
         }
 
         try {
-            const response = await fetch('api/addEvent', {
+            const response = await fetch('/api/events/addEvent', {
                 method: 'POST',
                 body: JSON.stringify({newEvent}),
             });
