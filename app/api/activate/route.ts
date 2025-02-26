@@ -2,6 +2,7 @@ import { authOptions } from "@/lib/auth";
 import {MongoClient} from "mongodb";
 import { getServerSession } from "next-auth";
 import {NextResponse} from 'next/server';
+import {ObjectId} from "mongodb";
 
 const client = new MongoClient(process.env.DB_URL!)
 let user = null
@@ -14,8 +15,8 @@ export async function POST(request: Request) {
 
     await client.connect();
     user = await client.db("fantastic-four").collection("events");
-    const {name} = await request.json();
-    const result = await user.findOneAndUpdate({"name": name}, [{ $set: { isActive: { $not: "$isActive" } } }]);
+    const {id} = await request.json();
+    const result = await user.findOneAndUpdate({"_id": new ObjectId(id)}, [{ $set: { isActive: { $not: "$isActive" } } }]);
 
     if (result) {
         return NextResponse.json({status: "success"}, {status: 200});

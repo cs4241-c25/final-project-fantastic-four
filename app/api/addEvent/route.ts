@@ -7,11 +7,11 @@ let events = null
 export async function POST(request: Request) {
     await client.connect();
     events = await client.db("fantastic-four").collection("events");
-    const newEvent = await request.json();
-    const result = await events.insertOne(newEvent);
+    const {name, date} = await request.json();
+    const result = await events.insertOne({"name": name, "isActive": false, "date": date});
     
     if (result) {
-        return NextResponse.json({status: "success", event: newEvent}, {status: 201});
+        return NextResponse.json({status: "success", event: result}, {status: 201});
     } else {
         return NextResponse.json({status: "error", message: "Failed to add event"}, {status: 500});
     }
