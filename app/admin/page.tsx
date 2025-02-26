@@ -2,6 +2,7 @@
 import { MemberList } from "@/components/memberList"
 import AddEventButton from "@/components/addEventButton"
 import { useSession } from "next-auth/react"
+import { Container, Row } from "react-bootstrap"
 
 export default function Home() {
   const { status, data } = useSession()
@@ -15,9 +16,11 @@ export default function Home() {
   }
   
   return (
-    <>
+    <Container>
+      <Row>
         <AddEventButton/>
-        <MemberList/>
-    </>
+      </Row>
+      <MemberList/>
+    </Container>
   );
 }

@@ -71,12 +71,12 @@ export const MemberList = () => {
                 {data.map(({name, email, verified, access, role}) => (
                     <ListGroup.Item key={email}>
                         <Row>
-                            <Col as='b'>{name}</Col>
-                            <Col sm={3}>{email}</Col>
+                            <Col as='b' sm={2}>{name}</Col>
+                            <Col sm={2}>{email}</Col>
                             <Col>{verified ? 
                                 access ? 
-                                    <Button onClick={() => changeAccess(email)}>Revoke List Access</Button> :
-                                    <Button onClick={() => changeAccess(email)}>Approve List Access</Button> :
+                                    <Button variant='danger' onClick={() => changeAccess(email)}>Revoke</Button> :
+                                    <Button variant='success' onClick={() => changeAccess(email)}>Approve</Button> :
                                     <Button variant='outline-primary' onClick={() => verifyUser(email)}>Verify User</Button>
                                 }
                             </Col>
@@ -88,7 +88,7 @@ export const MemberList = () => {
                                 </Form.Select>
                             </Col>
                             <Col>
-                                <Button variant="danger" onClick={() => delUser(email)}>Delete User</Button>
+                                <Button variant="danger" onClick={() => delUser(email)}>Delete</Button>
                             </Col>
                         </Row>
                     </ListGroup.Item>

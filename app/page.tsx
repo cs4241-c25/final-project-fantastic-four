@@ -2,6 +2,7 @@
 import {ListGroup} from 'react-bootstrap'
 import {useEffect, useState} from "react";
 import Event from '../types/event';
+import moment from 'moment';
 
 export default function Home() {
   const [events, setEvents] = useState<Event[]>([])
@@ -25,6 +26,7 @@ export default function Home() {
               <h2>{event.name}</h2>
               <p>Date: {event.date}</p>
               <p>{event.isActive? "Active" : "Not Active"}</p>
+              <p>Time: {moment(event.time, 'hh:mm').format('hh:mm a')}</p>
             </ListGroup.Item>
         ))}
       </ListGroup>
