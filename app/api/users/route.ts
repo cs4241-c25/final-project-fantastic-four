@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 
 const handler = async () => {
     const session = await getServerSession(authOptions)
-    if(!session || !(session.user!.name == 'admin')){
+    if(!session || !(session.user!.role == 'admin')){
       return NextResponse.json({}, {status: 403})
     }
 
@@ -18,7 +18,8 @@ const handler = async () => {
       name: 1,
       email: 1,
       verified: 1,
-      access: 1
+      access: 1,
+      role: 1
     }).toArray()
     client.close()
 

@@ -1,25 +1,26 @@
 'use client'
 import { Form, Button } from 'react-bootstrap/'
 import React, { useState } from 'react'
-import Event from '../../types/event'
 import {useRouter} from 'next/navigation'
 
 export default function Home() {
     const [eventName, setEventName] = useState('');
     const [eventDate, setEventDate] = useState('');
+    const [eventTime, setEventTime] = useState('22:00')
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const newEvent: Event = {
+        const newEvent = {
             name: eventName,
-            isActive: true,
             date: eventDate,
+            time: eventTime
         }
+
         try {
             const response = await fetch('api/addEvent', {
                 method: 'POST',
-                body: JSON.stringify(newEvent)
+                body: JSON.stringify({newEvent}),
             });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -41,6 +42,10 @@ export default function Home() {
                 <Form.Group controlId="formEventDate">
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="date" value={eventDate} onChange={(e) => setEventDate(e.target.value)}></Form.Control>
+                </Form.Group>
+                <Form.Group controlId="formEventTime">
+                    <Form.Label>Start Time</Form.Label>
+                    <Form.Control type="time" value={eventTime} onChange={(e) => setEventTime(e.target.value)}></Form.Control>
                 </Form.Group>
                 <Button variant="primary" type="submit">Submit</Button>
             </Form>
