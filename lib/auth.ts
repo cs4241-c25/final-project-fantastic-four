@@ -53,14 +53,6 @@ export const authOptions: NextAuthOptions  = {
 
         if(!password) return null
 
-<<<<<<< HEAD
-          return {id: user.email, name: user.name}
-      },
-    }),
-  ],
-  session: {
-    strategy: "jwt",
-=======
         return {id: user.email, name: user.name, role: user.role}
       },
     }),
@@ -80,6 +72,5 @@ export const authOptions: NextAuthOptions  = {
       session.user.role = token.role
       return session
     }
->>>>>>> dbccb004b1ebccb6ed1cdc0038166d2eaed37bfc
   }
 }
