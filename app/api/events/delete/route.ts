@@ -1,5 +1,5 @@
 import { authOptions } from "@/lib/auth";
-import {MongoClient} from "mongodb";
+import {MongoClient, ObjectId} from "mongodb";
 import { getServerSession } from "next-auth";
 import {NextResponse} from 'next/server';
 
@@ -13,7 +13,8 @@ export async function POST(request: Request) {
     
     await client.connect();
     const events = await client.db("fantastic-four").collection("events");
-    const {_id} = await request.json();
+    let {_id} = await request.json();
+    _id = ObjectId.createFromHexString(_id)
     const result = await events.deleteOne({"_id": _id});
 
     const guests = await client.db("fantastic-four").collection("guests");
