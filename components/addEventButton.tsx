@@ -4,7 +4,7 @@ import {Button} from 'react-bootstrap'
 export default function AddEventButton() {
     return (
         <>
-            <Button href='/events/addEvent'>
+            <Button href='/addEvent'>
                 Add Event
             </Button>
         </>
