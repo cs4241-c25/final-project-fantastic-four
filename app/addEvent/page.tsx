@@ -1,7 +1,6 @@
 'use client'
 import { Form, Button } from 'react-bootstrap/'
 import React, { useState } from 'react'
-import Event from '../../types/event'
 import {useRouter} from 'next/navigation'
 
 export default function Home() {
@@ -12,16 +11,16 @@ export default function Home() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const newEvent: Event = {
+        const newEvent = {
             name: eventName,
-            isActive: true,
             date: eventDate,
             time: eventTime
         }
+
         try {
             const response = await fetch('api/addEvent', {
                 method: 'POST',
-                body: JSON.stringify(newEvent)
+                body: JSON.stringify({newEvent}),
             });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
