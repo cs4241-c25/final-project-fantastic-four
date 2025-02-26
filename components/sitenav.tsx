@@ -11,6 +11,7 @@ export const SiteNav = () => (
           <NavLink href="/">Home</NavLink>
           <NavLink href="/admin">Admin</NavLink>
           <NavLink href="/register">Register</NavLink>
+          <NavLink href="/account">Account</NavLink>
         </Nav>
       </NavbarCollapse>
       <LogOutButton/>
