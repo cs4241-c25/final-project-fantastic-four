@@ -5,6 +5,7 @@ import Event from '../types/event';
 import moment from 'moment';
 import { useSession } from "next-auth/react";
 import { ObjectId } from 'mongodb';
+import Link from 'next/link'
 
 export default function Home() {
   const [events, setEvents] = useState<Event[]>([])
@@ -49,7 +50,11 @@ export default function Home() {
             .map((event) => (
             <ListGroup.Item key={event._id.toString()}>
               <Row>
-                <Col><h2>{event.name}</h2></Col>
+                <Col as='h2'>
+                  <Link href={`/events/${event._id.toString()}`} className="nav-link">
+                    {event.name}
+                  </Link>
+                </Col>
                 <Col><p>{event.date}</p></Col>
                 {data?.user!.role === 'admin' ?
                     <Col><Button
