@@ -1,4 +1,4 @@
-import { MONGO_CLIENT_EVENTS, MongoClient } from "mongodb"
+import { MongoClient } from "mongodb"
 import {NextResponse} from 'next/server';
 
 const client = new MongoClient(process.env.DB_URL!)
