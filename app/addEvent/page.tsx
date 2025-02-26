@@ -11,16 +11,14 @@ export default function Home() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const newEvent = {
-            name: eventName,
-            date: eventDate,
-            time: eventTime
-        }
-
         try {
             const response = await fetch('/api/events/addEvent', {
                 method: 'POST',
-                body: JSON.stringify({newEvent}),
+                body: JSON.stringify({
+                    name: eventName,
+                    date: eventDate,
+                    time: eventTime
+                }),
             });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);

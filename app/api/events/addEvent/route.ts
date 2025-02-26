@@ -8,6 +8,7 @@ export async function POST(request: Request) {
     await client.connect();
     events = await client.db("fantastic-four").collection("events");
     const {name, date, time} = await request.json();
+    console.log(name, date, time)
     const result = await events.insertOne({"name": name, "isActive": true, "date": date, "time": time});
     
     if (result) {
