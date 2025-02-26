@@ -70,11 +70,15 @@ export const authOptions: NextAuthOptions  = {
   },
   callbacks: {
     jwt({ token, user: user }) {
-      if(user) token.role = user.role
+      if(user) {
+        token.role = user.role
+        token.id = new ObjectId(user.id)
+      }
       return token
     },
     session({ session, token }) {
       session.user.role = token.role
+      session.user.id = token.id
       return session
     }
   }

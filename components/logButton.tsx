@@ -10,6 +10,7 @@ export default function LogButton() {
   }
 
   if(status == 'authenticated'){
+    console.log(data)
     return (
       <>
         <Button onClick={() => signOut()}>
