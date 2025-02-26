@@ -21,6 +21,7 @@ export default function Events({eventID}: {eventID: string}) {
 
     React.useEffect(() => {
       getGuests();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
