@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     await client.connect();
     const db = client.db('fantastic-four'); 
     const guests = db.collection('guests'); 
-    let newGuest = await request.json(); 
+    const newGuest = await request.json(); 
     const result = await guests.insertOne(newGuest);  
 
     

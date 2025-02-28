@@ -1,6 +1,5 @@
 import React from 'react';
 import Events from '@/components/eventList';
-import { Form } from 'react-bootstrap';
 export default async function Page( 
     {
     params,
