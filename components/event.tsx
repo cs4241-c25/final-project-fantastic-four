@@ -1,4 +1,7 @@
 import type Event from '@/types/event'
+import Guest from '@/types/guest';
+import React from 'react';
+import { ListGroup } from 'react-bootstrap';
 
 export default function Event({event}: {event: Event}) {
 
@@ -10,7 +13,7 @@ export default function Event({event}: {event: Event}) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({eventID}),
+        body: JSON.stringify({eventID: event._id}),
       });
       const data = await response.json();
       setGuests(data);
@@ -24,7 +27,7 @@ export default function Event({event}: {event: Event}) {
     return (
       <>
         <ListGroup>
-          {guests.filter(guest => guest.eventID === eventID ).map((guest) => (
+          {guests.map((guest) => (
               <ListGroup.Item key={guest._id.toString()}>
                 <h2> {guest.firstName} {guest.lastName}</h2>
               </ListGroup.Item>
@@ -32,25 +35,3 @@ export default function Event({event}: {event: Event}) {
         </ListGroup>
       </>
     );}
-
-
-
-
-<Row>
-<Col as='h2'>
-  <Link href={`/events/${event._id.toString()}`} className="nav-link">
-    {event.name}
-  </Link>
-</Col>
-<Col><p>{event.date}</p></Col>
-{data?.user!.role === 'admin' ?
-    <Col><Button
-        onClick={() => activate(event._id.toString())}>{event.isActive ? "Deactivate" : "Activate"}</Button></Col>
-    : <Col><p>{event.isActive ? "Active" : "Not Active"}</p></Col>}
-<Col>{data?.user!.role === 'admin' ? 
-  <Button onClick={() => edit(event._id)}>Edit</Button> : ''}
-</Col>
-<Col>{data?.user!.role === 'admin' ? 
-  <Button variant='danger' onClick={() => delEvent(event._id)}>Delete</Button> : ''}
-</Col>
-</Row>
