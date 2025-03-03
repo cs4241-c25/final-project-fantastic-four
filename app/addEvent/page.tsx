@@ -6,7 +6,6 @@ import {useRouter} from 'next/navigation'
 export default function Home() {
     const [eventName, setEventName] = useState('');
     const [eventDate, setEventDate] = useState('');
-    const [eventTime, setEventTime] = useState('22:00')
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,8 +15,7 @@ export default function Home() {
                 method: 'POST',
                 body: JSON.stringify({
                     name: eventName,
-                    date: eventDate,
-                    time: eventTime
+                    date: eventDate
                 }),
             });
             if (!response.ok) {
@@ -40,10 +38,6 @@ export default function Home() {
                 <Form.Group controlId="formEventDate">
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="date" value={eventDate} onChange={(e) => setEventDate(e.target.value)}></Form.Control>
-                </Form.Group>
-                <Form.Group controlId="formEventTime">
-                    <Form.Label>Start Time</Form.Label>
-                    <Form.Control type="time" value={eventTime} onChange={(e) => setEventTime(e.target.value)}></Form.Control>
                 </Form.Group>
                 <Button variant="primary" type="submit">Submit</Button>
             </Form>
