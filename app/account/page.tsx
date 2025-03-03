@@ -43,15 +43,23 @@ export default function Home() {
 
     return (
         <>
-            <h2>Update Account Information</h2>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="formUserEmail">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="text" value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
-                </Form.Group>
-                <Button variant="primary" type="submit">Update Email</Button>
-                <Button variant="primary" type="submit">Reset Password</Button>
-            </Form>
+            <div className="container">
+                <h2>Update Account Information</h2>
+                <div className="row justify-content-center">
+                    <div className="col-md-4">
+                        <Form onSubmit={handleSubmit} className="mt-5">
+                            <Form.Group controlId="formUserEmail">
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            </Form.Group>
+                            <div className="mt-5">
+                                <Button variant="primary" type="submit" className="me-2">Update Email</Button>
+                                <Button variant="secondary" type="button">Reset Password</Button>
+                            </div>
+                        </Form>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
