@@ -27,9 +27,9 @@ export default function Events({eventID}: {eventID: string}) {
     return (
       <>
         <ListGroup>
-          {guests.filter(guest => guest.eventID === eventID ).map((guest) => (
+          {guests.filter(guest => guest.eventID.toString() === eventID ).map((guest) => (
               <ListGroup.Item key={guest._id.toString()}>
-                <h2> {guest.firstName} {guest.lastName}</h2>
+                <h2> {guest.name} </h2>
               </ListGroup.Item>
           ))}
         </ListGroup>
