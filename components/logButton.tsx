@@ -13,7 +13,7 @@ export default function LogButton() {
     console.log(data)
     return (
       <>
-        <Button onClick={() => signOut()}>
+        <Button className="navbar-button" onClick={() => signOut()}>
           Log Out<b> {data.user!.name}</b>
         </Button>
       </>
@@ -21,7 +21,7 @@ export default function LogButton() {
   }else{
     return (
       <>
-        <Button onClick={() => signIn()}>
+        <Button className="navbar-button" onClick={() => signIn()}>
           Log In
         </Button>
       </>
