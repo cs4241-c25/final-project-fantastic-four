@@ -1,10 +1,17 @@
 'use client'
-import React, { Suspense } from 'react';
 import Events from '@/components/eventList';
 import AddGuestForm from '@/components/addGuest';
 import Guest from '@/types/guest';
 import { useSearchParams } from 'next/navigation';
-export default function Page(){
+import React, { Suspense } from 'react';
+
+export default function EventPage(){
+    <Suspense>
+        <Page/>
+    </Suspense>
+}
+
+function Page(){
  
     const eventID = useSearchParams().get('eventID')
     
@@ -27,7 +34,7 @@ export default function Page(){
       }, []);
 
     return (
-        <Suspense>
+        <>
             <div style={{ textAlign: "center", marginBottom: "20px" }}>
                 <AddGuestForm
                     eventID = {eventID!}
@@ -37,6 +44,6 @@ export default function Page(){
             <Events
                 guests = {guests}
             />
-        </Suspense>
+        </>
     );
 }
