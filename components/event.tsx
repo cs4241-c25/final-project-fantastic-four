@@ -29,7 +29,7 @@ export default function Event({event}: {event: Event}) {
         <ListGroup>
           {guests.map((guest) => (
               <ListGroup.Item key={guest._id.toString()}>
-                <h2> {guest.firstName} {guest.lastName}</h2>
+                <h2> {guest.name}</h2>
               </ListGroup.Item>
           ))}
         </ListGroup>
