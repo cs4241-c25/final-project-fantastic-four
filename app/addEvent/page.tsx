@@ -1,5 +1,5 @@
 'use client'
-import { Form, Button } from 'react-bootstrap/'
+import { Form, Button, Col, Row, Container } from 'react-bootstrap/'
 import React, { useState } from 'react'
 import {useRouter} from 'next/navigation'
 
@@ -30,9 +30,9 @@ export default function Home() {
     };
     return (
         <>
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-4">
+            <Container>
+                <Row className="justify-content-center">
+                    <Col md={4}>
                         <Form onSubmit={handleSubmit} className="mt-5">
                             <Form.Group controlId="formEventName">
                                 <Form.Label>Event Name</Form.Label>
@@ -44,9 +44,9 @@ export default function Home() {
                             </Form.Group>
                             <Button variant="primary" type="submit" className="mt-5">Submit</Button>
                         </Form>
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
+            </Container>
         </>
     );
 }
