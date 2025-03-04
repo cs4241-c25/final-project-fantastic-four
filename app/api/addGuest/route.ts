@@ -9,7 +9,6 @@ export async function POST(request: Request) {
     await client.connect();
     const db = client.db('fantastic-four'); 
     const guests = db.collection('guests'); 
-<<<<<<< HEAD
     let newGuest = await request.json(); 
     //convert strings passed from frontend into Object Id's for the backend
     newGuest.eventID = ObjectId.createFromHexString(newGuest.eventID);
@@ -17,10 +16,6 @@ export async function POST(request: Request) {
     await guests.insertOne(newGuest); 
     const result = await guests.find().toArray();
     
-=======
-    const newGuest = await request.json(); 
-    const result = await guests.insertOne(newGuest);  
->>>>>>> 571443f01d287f01b2263ba9880d2d2dd82793a2
 
     
     if (result) {

@@ -40,7 +40,7 @@ export const EventListItem = ({
     return(
         <Row>
             <Col as='b'>
-                <Link href={`/events/${event._id.toString()}`} className="nav-link">
+                <Link href={`/events/?eventID=${event._id.toString()}`} className="nav-link">
                     {event.name}
                 </Link>
             </Col>
