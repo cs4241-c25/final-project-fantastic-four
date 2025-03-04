@@ -20,26 +20,27 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <ListGroup>
-        {events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-            .map((event) => (
-            <ListGroup.Item key={event._id.toString()}>
-              {edit == event._id.toString() ?
-                <EventEditItem 
-                  event={event}
-                  getEvents={getEvents}
-                  setEdit={setEdit}/>:
-                <EventListItem
-                  event={event}
-                  getEvents={getEvents}
-                  setEdit={setEdit}
-                />
-            
-            }
-            </ListGroup.Item>
-        ))}
-      </ListGroup>
-    </>
+      <>
+        <div className="container">
+          <ListGroup>
+            {events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                .map((event) => (
+                    <ListGroup.Item key={event._id.toString()}>
+                      {edit == event._id.toString() ?
+                          <EventEditItem
+                              event={event}
+                              getEvents={getEvents}
+                              setEdit={setEdit}/> :
+                          <EventListItem
+                              event={event}
+                              getEvents={getEvents}
+                              setEdit={setEdit}
+                          />
+                      }
+                    </ListGroup.Item>
+                ))}
+          </ListGroup>
+        </div>
+      </>
   );
 }
