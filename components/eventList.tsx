@@ -1,19 +1,21 @@
 'use client'
-import {ListGroup} from 'react-bootstrap'
+import { ListGroup, Button } from 'react-bootstrap';
 import Guest from '@/types/guest'; 
 import React from 'react';
 
-export default function Events({guests}: {guests: Guest[]}) {
-
+export default function Events({ guests, delGuest }: { guests: Guest[], delGuest: (id: string) => void }) {
     return (
       <>
         <ListGroup>
           {guests.map((guest) => (
-              <ListGroup.Item key={guest._id.toString()}>
-                <h2> {guest.name} </h2>
-              </ListGroup.Item>
+            <ListGroup.Item key={guest._id.toString()} className="d-flex justify-content-between align-items-center">
+              <b>{guest.name}</b>
+              <Button variant="danger" onClick={() => delGuest(guest._id.toString())}>
+                Remove Guest
+              </Button>
+            </ListGroup.Item>
           ))}
         </ListGroup>
       </>
-    );}
-
+    );
+}
