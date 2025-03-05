@@ -65,7 +65,7 @@ export default function Register() {
                             {message && <Alert className="mt-3">{message}</Alert>}
                         </Form>
                         <div className="mt-3 text-center">
-                            Already have an account? <Link href='/signin'>Sign In</Link>
+                            Already have an account? <Link href='/signin' className="text-warning">Sign In</Link>
                         </div>
                     </div>
                 </div>
