@@ -1,6 +1,4 @@
-import { authOptions } from "@/lib/auth";
 import {MongoClient, ObjectId} from "mongodb";
-import { getServerSession } from "next-auth";
 import {NextResponse} from 'next/server';
 
 const client = new MongoClient(process.env.DB_URL!)

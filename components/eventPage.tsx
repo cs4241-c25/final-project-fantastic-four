@@ -35,6 +35,7 @@ export default function Page() {
 
     React.useEffect(() => {
         getGuests();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
