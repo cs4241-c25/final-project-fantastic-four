@@ -1,9 +1,7 @@
 'use client'
-import { ObjectId } from 'mongodb';
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 import {Form, Button} from 'react-bootstrap'
-import Events from './eventList';
 
 export default function AddGuestForm({eventID, getGuests}: {eventID: string, getGuests: () => void}) {
     const [guestName, setGuestName] = useState(""); 
@@ -14,7 +12,7 @@ export default function AddGuestForm({eventID, getGuests}: {eventID: string, get
     
     if(status == 'authenticated'){
       console.log(data)
-      let user = data.user!.id.toString()
+      const user = data.user!.id.toString()
       const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
           try {
@@ -29,8 +27,8 @@ export default function AddGuestForm({eventID, getGuests}: {eventID: string, get
               if (!response.ok) {
                   throw new Error(`HTTP error! status: ${response.status}`);
               }
-              const result = await response.json();
               getGuests();
+              setGuestName(""); 
           } catch (error) {
               console.error('Error adding guest:', error);
           }

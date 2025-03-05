@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     await client.connect();
     const db = client.db('fantastic-four'); 
     const guests = db.collection('guests'); 
-    let newGuest = await request.json(); 
+    const newGuest = await request.json(); 
     //convert strings passed from frontend into Object Id's for the backend
     newGuest.eventID = ObjectId.createFromHexString(newGuest.eventID);
     newGuest.addedBy = ObjectId.createFromHexString(newGuest.addedBy);

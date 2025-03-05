@@ -1,0 +1,48 @@
+'use client'
+import React from 'react';
+import Events from '@/components/eventList';
+import AddGuestForm from '@/components/addGuest';
+import Guest from '@/types/guest';
+import { useSearchParams } from 'next/navigation';
+
+export default function Page() {
+    const eventID = useSearchParams().get('eventID');
+    const [guests, setGuests] = React.useState<Guest[]>([]);
+
+    async function getGuests() {
+        const response = await fetch('/api/getList', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ eventID }),
+        });
+        const data = await response.json();
+        setGuests(data);
+    }
+
+    const delGuest = async (_id: string) => {
+        const response = await fetch('/api/deleteGuest', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ _id }),
+        });
+
+        if (response.ok) {
+            await getGuests();
+        }
+    };
+
+    React.useEffect(() => {
+        getGuests();
+    }, []);
+
+    return (
+        <>
+            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                <AddGuestForm eventID={eventID!} getGuests={getGuests} />
+            </div>
+            <Events guests={guests} delGuest={delGuest} />
+        </>
+    );
+}
