@@ -21,11 +21,13 @@ export default function AddGuestForm({eventID, getGuests}: {eventID: string, get
                   body: JSON.stringify({
                       name: guestName,
                       eventID: eventID,
-                      addedBy: user
+                      addedById: user,
+                      addedByName: data.user!.name
                   }),
               });
               if (!response.ok) {
-                  throw new Error(`HTTP error! status: ${response.status}`);
+                  setGuestName(""); 
+                  //throw new Error(`HTTP error! status: ${response.status}`);
               }
               getGuests();
               setGuestName(""); 

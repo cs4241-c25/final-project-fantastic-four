@@ -3,5 +3,6 @@ export default interface Guest{
     _id: ObjectId,
     name: string,
     eventID: ObjectId,
-    addedBy: ObjectId
+    addedById: ObjectId,
+    addedByName: string
 }
