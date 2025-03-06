@@ -67,32 +67,68 @@ export const MemberList = () => {
     }, [])
 
     return(
-        <ListGroup>
-                {data.map(({name, email, verified, access, role}) => (
-                    <ListGroup.Item key={email}>
-                        <Row>
-                            <Col as='b' sm={2}>{name}</Col>
-                            <Col sm={2}>{email}</Col>
-                            <Col>{verified ? 
-                                access ? 
-                                    <Button variant='danger' onClick={() => changeAccess(email)}>Revoke</Button> :
-                                    <Button variant='success' onClick={() => changeAccess(email)}>Approve</Button> :
-                                    <Button variant='outline-primary' onClick={() => verifyUser(email)}>Verify User</Button>
-                                }
-                            </Col>
-                            <Col>
-                                <Form.Select defaultValue={role} onChange={(e) => setRole(email, e.target.value)}>
-                                    <option value="admin">Admin</option>
-                                    <option value="member">Member</option>
-                                    <option value="door">Door</option>
-                                </Form.Select>
-                            </Col>
-                            <Col>
-                                <Button variant="danger" onClick={() => delUser(email)}>Delete</Button>
-                            </Col>
-                        </Row>
-                    </ListGroup.Item>
-                ))}
+        <ListGroup className="user-list-container">
+            {data.map(({ name, email, verified, access, role }) => (
+                <ListGroup.Item key={email} className="user-list-item">
+                    <Row className="align-items-center">
+                        <Col sm={2} className="user-name">
+                            <b>{name}</b>
+                        </Col>
+                        <Col sm={3} className="user-email">
+                            {email}
+                        </Col>
+                        <Col sm={3} className="user-actions">
+                            {verified ? (
+                                access ? (
+                                    <Button
+                                        variant="danger"
+                                        onClick={() => changeAccess(email)}
+                                        className="action-button"
+                                    >
+                                        Revoke
+                                    </Button>
+                                ) : (
+                                    <Button
+                                        variant="success"
+                                        onClick={() => changeAccess(email)}
+                                        className="action-button"
+                                    >
+                                        Approve
+                                    </Button>
+                                )
+                            ) : (
+                                <Button
+                                    variant="outline-primary"
+                                    onClick={() => verifyUser(email)}
+                                    className="action-button"
+                                >
+                                    Verify User
+                                </Button>
+                            )}
+                        </Col>
+                        <Col sm={2}>
+                            <Form.Select
+                                defaultValue={role}
+                                onChange={(e) => setRole(email, e.target.value)}
+                                className="role-select"
+                            >
+                                <option value="admin">Admin</option>
+                                <option value="member">Member</option>
+                                <option value="door">Door</option>
+                            </Form.Select>
+                        </Col>
+                        <Col sm={2}>
+                            <Button
+                                variant="danger"
+                                onClick={() => delUser(email)}
+                                className="delete-button"
+                            >
+                                Delete
+                            </Button>
+                        </Col>
+                    </Row>
+                </ListGroup.Item>
+            ))}
         </ListGroup>
     );
 }

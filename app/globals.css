@@ -165,3 +165,65 @@ html, body {
 .remove-guest-button {
     font-size: 0.9rem;
 }
+
+.user-list-container {
+    max-width: 1200px; /* Wider container for better spacing */
+    margin: 0 auto; /* Center the list horizontally */
+    padding: 1rem; /* Add spacing around the list */
+}
+
+.user-list-item {
+    background-color: #f3f09a; /* Yellow background to match theme */
+    border: none;
+    margin-bottom: 0.5rem; /* Space between items */
+    border-radius: 1rem; /* Rounded corners */
+    padding: 1rem; /* Add padding inside each item */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.user-list-item:first-child {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.user-list-item:last-child {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #046b37;
+}
+
+.user-email {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.user-actions .action-button {
+    font-size: 0.9rem;
+}
+
+.role-select {
+    font-size: 0.9rem;
+}
+
+.delete-button {
+    font-size: 0.9rem;
+}
+
+.add-event-button {
+    background-color: #ffc107;
+    color: #046b37;
+    border: none;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.add-event-button:hover {
+    background-color: #dca606;
+}
