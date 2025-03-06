@@ -9,7 +9,7 @@ export const SiteNav = () => {
     return (
         <Navbar expand="lg" bg="dark" variant="dark" className="custom-navbar">
             <Container>
-                <NavbarBrand href="/">List App</NavbarBrand>
+                <NavbarBrand href="/">LIST APP</NavbarBrand>
                 <NavbarToggle aria-controls="basic-navbar-nav" />
                 <NavbarCollapse id="basic-navbar-nav">
                     <Nav className="me-auto">
