@@ -15,7 +15,7 @@ Continuous Deployment/Integration: github actions
 The primary challenges we faced working on this project were several group members learning next.js and implementing the poorly documented Auth.js credentials provider
 # Responsibilities
 - Lev: Authentication and session management, role management, event editing, navigation
-- Rodrigo:
+- Rodrigo: Creating new events and displaying list of events, approving and revoking list access, activating and deactivating events, updating user email and did most of the styling.
 - Dan: Display list of guests for every event using dynamic routing, user ability to add guests and remove them, admin can remove any guest
 - Victor: 
 # Video
