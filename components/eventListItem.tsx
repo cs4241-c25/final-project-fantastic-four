@@ -39,15 +39,15 @@ export const EventListItem = ({
 
     return(
         <Row className="event-row">
-            <Col xs={4} className="event-name">
+            <Col xs={12} md={4} className="event-name">
                 <Link href={`/events/?eventID=${event._id.toString()}`} className="nav-link">
                     {event.name}
                 </Link>
             </Col>
-            <Col xs={3} className="event-date">
+            <Col xs={12} md={3} className="event-date">
                 <p>{new Date(event.date).toLocaleDateString()}</p>
             </Col>
-            <Col xs={3} className="event-status">
+            <Col xs={12} md={3} className="event-status">
                 {data?.user!.role === 'admin' ? (
                     <Button
                         variant={event.isActive ? 'success' : 'warning'}
@@ -63,10 +63,10 @@ export const EventListItem = ({
             </Col>
             {data?.user!.role === 'admin' && (
                 <>
-                    <Col xs={1}>
+                    <Col xs={6} md={1}>
                         <Button onClick={() => setEdit(event._id.toString())}>Edit</Button>
                     </Col>
-                    <Col xs={1}>
+                    <Col xs={6} md={1}>
                         <Button variant="danger" onClick={() => delEvent(event._id.toString())}>
                             Delete
                         </Button>

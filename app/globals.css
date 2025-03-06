@@ -71,10 +71,41 @@ html, body {
 }
 
 .event-row {
-    padding: 0.5rem 1rem;
-    margin-bottom: 0.5rem;
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Stack columns vertically on smaller screens */
+    align-items: flex-start; /* Align items to the start */
+    background-color: #f3f09a;
+}
+
+.event-name {
+    margin-bottom: 0.5rem; /* Add spacing below event name */
+}
+
+.event-name .nav-link {
+    font-weight: bold;
+    color: #046b37;
+    text-decoration: none;
+}
+
+.event-date {
+    margin-bottom: 0.5rem; /* Add spacing below event date */
+}
+
+.event-status {
+    margin-bottom: 0.5rem; /* Add spacing below event status */
+}
+
+.event-status .btn,
+.event-status p {
+    margin-bottom: 0.5rem; /* Add spacing below event status */
+}
+
+/* Style adjustments for larger screens */
+@media (min-width: 768px) {
+    .event-row {
+        flex-direction: row; /* Display columns in a row on larger screens */
+        align-items: center; /* Vertically center items in a row */
+    }
 }
 
 .event-name .nav-link {
