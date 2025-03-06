@@ -15,7 +15,7 @@ export default function SignIn() {
         if(token) setCsrf(token)
     }
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async () => {
        router.push('/');
     }
 
