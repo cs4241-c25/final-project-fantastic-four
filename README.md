@@ -16,7 +16,7 @@ The primary challenges we faced working on this project were several group membe
 # Responsibilities
 - Lev: Authentication and session management, role management, event editing, navigation
 - Rodrigo:
-- Dan:
+- Dan: Display list of guests for every event using dynamic routing, user ability to add guests and remove them, admin can remove any guest
 - Victor: 
 # Video
 https://youtu.be/jRNtF0RuDfc 
