@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Description
+This application is event management software that allows for the creation of approved guest lists for social events. Users verified by administrators can add and delete names on a list for each event and edit their own account information. Administrators can create events, edit them, and delete users and any names on any list. They can also deactivate events to prevent addition of new names, revoke list access from any user, and change roles of other members to administrator or door duty. In door mode users can check in guests and the time they were checked in is recorded. Due to unforeseen circumstances for one group member door functionality was not completed on time. 
+# Additional Instructions
+There is an administrator account with credentials ldgiffune@wpi.edu:admin123. This account can be used to approve additional registered accounts created on the registration page via the admin dashboard
+# Used
+- Web framework: NextJS
+- Server: node.js
+- Programming language (client and server): Typescript
+- Styles framework: Bootstrap
+- Database: MongoDB
+- Authentication: Auth.js
+- Deployment: Vercel 
+Continuous Deployment/Integration: github actions
+# Challenges
+The primary challenges we faced working on this project were several group members learning next.js and implementing the poorly documented Auth.js credentials provider
+# Responsibilities
+- Lev: Authentication and session management, role management, event editing, navigation
+- Rodrigo: Creating new events and displaying list of events, approving and revoking list access, activating and deactivating events, updating user email and did most of the styling.
+- Dan: Display list of guests for every event using dynamic routing, user ability to add guests and remove them, admin can remove any guest
+- Victor: 
+# Video
+https://youtu.be/jRNtF0RuDfc 

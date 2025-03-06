@@ -55,6 +55,7 @@ export default function Page() {
     // Fetch guests when the component mounts
     React.useEffect(() => {
         getGuests();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // Check event status when eventID changes

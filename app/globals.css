@@ -25,6 +25,7 @@ html, body {
     background-color: #046B37;
     color: #FFB71D;
     height: 100%;
+    font-family: Montserrat, monospace;
 }
 
 .page-container {
@@ -41,4 +42,126 @@ html, body {
 .footer {
     flex-shrink: 0;
     padding: 20px 0;
+}
+
+.party-list-container {
+    padding: 1rem 0;
+}
+
+.party-list-item {
+    background-color: #f3f09a;
+    border: 0;
+    margin-bottom: 0.75rem;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 1rem;
+}
+
+.party-list-item:first-child {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.party-list-item:last-child {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.party-list-item .list-group-item-action {
+    color: #FFB71D;
+}
+
+.event-row {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.event-name .nav-link {
+    font-weight: bold;
+    color: #046b37;
+    font-size: 1.2rem;
+    transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
+}
+
+.event-name .nav-link:hover {
+    color: #013e1d;
+    text-decoration-color: #013e1d;
+    text-decoration: underline;
+}
+
+.event-status p {
+    font-size: 0.85rem;
+}
+
+.status-active {
+    color: #046b37;
+}
+
+.status-inactive {
+    color: #d9534f;
+}
+
+.event-row button {
+    font-size: 0.85rem;
+}
+
+.event-row button.success {
+    background-color: #28a745;
+}
+
+.event-row button.warning {
+    background-color: #ffc107;
+}
+
+.event-row button.danger {
+    background-color: #dc3545;
+}
+
+.guest-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.guest-list-item {
+    background-color: #f3f09a;
+    border: none;
+    margin-bottom: 0.5rem;
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.guest-list-item:first-child {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.guest-list-item:last-child {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.guest-item-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 3rem;
+}
+
+.guest-name {
+    font-weight: bold;
+    color: #046b37;
+}
+
+.added-by {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.remove-guest-button {
+    font-size: 0.9rem;
 }

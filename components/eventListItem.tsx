@@ -38,23 +38,41 @@ export const EventListItem = ({
     } 
 
     return(
-        <Row>
-            <Col as='b'>
+        <Row className="event-row">
+            <Col xs={4} className="event-name">
                 <Link href={`/events/?eventID=${event._id.toString()}`} className="nav-link">
                     {event.name}
                 </Link>
             </Col>
-            <Col><p>{event.date}</p></Col>
-            {data?.user!.role === 'admin' ?
-                <Col><Button
-                    onClick={() => activate(event._id.toString())}>{event.isActive ? "Deactivate" : "Activate"}</Button></Col>
-                : <Col><p>{event.isActive ? "Active" : "Not Active"}</p></Col>}
-            <Col>{data?.user!.role === 'admin' ? 
-                <Button onClick={() => setEdit(event._id.toString())}>Edit</Button> : ''}
+            <Col xs={3} className="event-date">
+                <p>{new Date(event.date).toLocaleDateString()}</p>
             </Col>
-            <Col>{data?.user!.role === 'admin' ? 
-                <Button variant='danger' onClick={() => delEvent(event._id.toString())}>Delete</Button> : ''}
+            <Col xs={3} className="event-status">
+                {data?.user!.role === 'admin' ? (
+                    <Button
+                        variant={event.isActive ? 'success' : 'warning'}
+                        onClick={() => activate(event._id.toString())}
+                    >
+                        {event.isActive ? 'Deactivate' : 'Activate'}
+                    </Button>
+                ) : (
+                    <p className={event.isActive ? 'status-active' : 'status-inactive'}>
+                        {event.isActive ? 'Active' : 'Not Active'}
+                    </p>
+                )}
             </Col>
+            {data?.user!.role === 'admin' && (
+                <>
+                    <Col xs={1}>
+                        <Button onClick={() => setEdit(event._id.toString())}>Edit</Button>
+                    </Col>
+                    <Col xs={1}>
+                        <Button variant="danger" onClick={() => delEvent(event._id.toString())}>
+                            Delete
+                        </Button>
+                    </Col>
+                </>
+            )}
         </Row>
     )
 }

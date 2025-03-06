@@ -4,13 +4,19 @@ import React, { Suspense } from 'react'
 import Link from 'next/link'
 import { getCsrfToken } from 'next-auth/react'
 import { SignInError } from '@/components/signInError'
+import { useRouter } from 'next/navigation'
 
 export default function SignIn() {
     const [csrf, setCsrf] = React.useState('')
+    const router = useRouter();
 
     const getCsrf = async () => {
         const token = await getCsrfToken()
         if(token) setCsrf(token)
+    }
+
+    const handleSubmit = async () => {
+       router.push('/');
     }
 
     React.useEffect(() => {
@@ -22,7 +28,7 @@ export default function SignIn() {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-4">
-                        <Form action='/api/auth/callback/credentials' method='post' className="mt-5">
+                        <Form action='/api/auth/callback/credentials' method='post' onSubmit={handleSubmit} className="mt-5">
                             <Form.Group controlId="csrfToken">
                                 <Form.Control type="hidden" name="csrfToken" defaultValue={csrf}/>
                             </Form.Group>
