@@ -38,21 +38,24 @@ export default function AddGuestForm({eventID, getGuests}: {eventID: string, get
 
       return (
           <>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId='formGuestName'>
-              <Form.Label>Enter Name:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Guest's Name"
-                value={guestName}
-                onChange={(e) => setGuestName(e.target.value)}
-              />
-            </Form.Group>
-    
-            <Button type="submit" variant="primary">
-              Add Guest
-            </Button> 
-          </Form>
-        </>
+              <Form onSubmit={handleSubmit} className="guest-form">
+                  <div className="row justify-content-center">
+                      <div className="col-12 col-md-5">
+                          <Form.Group className="mb-3" controlId="formGuestName">
+                              <Form.Label>Enter Name:</Form.Label>
+                              <Form.Control
+                                  type="text"
+                                  placeholder="Guest's Name"
+                                  value={guestName}
+                                  onChange={(e) => setGuestName(e.target.value)}
+                              />
+                          </Form.Group>
+                          <Button type="submit" variant="primary" className="w-10">
+                              Add Guest
+                          </Button>
+                      </div>
+                  </div>
+              </Form>
+          </>
       );
   }}

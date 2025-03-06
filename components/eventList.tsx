@@ -7,25 +7,26 @@ import { useSession } from 'next-auth/react';
 export default function Events({ guests, delGuest }: { guests: Guest[], delGuest: (id: string) => void }) {
   const { data } = useSession();
     return (
-      <>
-        <ListGroup>
-          {guests.map((guest) => (
-            <ListGroup.Item key={guest._id.toString()} className="d-flex justify-content-between align-items-center">
-              <div className="flex-grow-1 d-flex justify-content-between">
-                <b>{guest.name}</b>
-                <span className="text-center w-25">{guest.addedByName}</span>
-              </div>
-              {(data?.user?.role === 'admin' || data?.user?.id === guest.addedById) && (
-        <Button
-          variant="danger"
-          onClick={() => delGuest(guest._id.toString())}
-        >
-          Remove Guest
-        </Button>
-        )}  
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-      </>
+        <>
+            <ListGroup className="guest-list-container">
+                {guests.map((guest) => (
+                    <ListGroup.Item key={guest._id.toString()} className="guest-list-item">
+                        <div className="guest-item-content">
+                            <span className="guest-name">{guest.name}</span>
+                            <span className="added-by">{guest.addedByName}</span>
+                        </div>
+                        {(data?.user?.role === 'admin' || data?.user?.id === guest.addedById) && (
+                            <Button
+                                variant="danger"
+                                className="remove-guest-button"
+                                onClick={() => delGuest(guest._id.toString())}
+                            >
+                                Remove Guest
+                            </Button>
+                        )}
+                    </ListGroup.Item>
+                ))}
+            </ListGroup>
+        </>
     );
 }
