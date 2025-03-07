@@ -46,7 +46,7 @@ export default function SignIn() {
                             </Suspense>
                         </Form>
                         <div className="mt-3 text-center">
-                            Don&apos;t have an account? <Link href='/register'>Register</Link>
+                            Don&apos;t have an account? <Link href='/register' className="text-warning">Register</Link>
                         </div>
                     </div>
                 </div>
