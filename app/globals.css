@@ -72,13 +72,13 @@ html, body {
 
 .event-row {
     display: flex;
-    flex-direction: column; /* Stack columns vertically on smaller screens */
-    align-items: flex-start; /* Align items to the start */
+    flex-direction: column;
+    align-items: flex-start;
     background-color: #f3f09a;
 }
 
 .event-name {
-    margin-bottom: 0.5rem; /* Add spacing below event name */
+    margin-bottom: 0.5rem;
 }
 
 .event-name .nav-link {
@@ -88,23 +88,22 @@ html, body {
 }
 
 .event-date {
-    margin-bottom: 0.5rem; /* Add spacing below event date */
+    margin-bottom: 0.5rem;
 }
 
 .event-status {
-    margin-bottom: 0.5rem; /* Add spacing below event status */
+    margin-bottom: 0.5rem;
 }
 
 .event-status .btn,
 .event-status p {
-    margin-bottom: 0.5rem; /* Add spacing below event status */
+    margin-bottom: 0.5rem;
 }
 
-/* Style adjustments for larger screens */
 @media (min-width: 768px) {
     .event-row {
-        flex-direction: row; /* Display columns in a row on larger screens */
-        align-items: center; /* Vertically center items in a row */
+        flex-direction: row;
+        align-items: center;
     }
 }
 
@@ -150,9 +149,9 @@ html, body {
 }
 
 .guest-list-container {
-    max-width: 800px;
+    max-width: 90vw;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0;
 }
 
 .guest-list-item {
@@ -179,37 +178,41 @@ html, body {
 .guest-item-content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
-    padding: 0 3rem;
 }
 
 .guest-name {
     font-weight: bold;
     color: #046b37;
+    margin-right: 1rem;
 }
 
 .added-by {
     font-size: 0.9rem;
     color: #6c757d;
+    margin-left: auto;
 }
 
 .remove-guest-button {
     font-size: 0.9rem;
+    margin-left: 1rem;
+    flex-shrink: 0;
 }
 
 .user-list-container {
-    max-width: 1200px; /* Wider container for better spacing */
-    margin: 0 auto; /* Center the list horizontally */
-    padding: 1rem; /* Add spacing around the list */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 .user-list-item {
-    background-color: #f3f09a; /* Yellow background to match theme */
+    background-color: #f3f09a;
     border: none;
-    margin-bottom: 0.5rem; /* Space between items */
-    border-radius: 1rem; /* Rounded corners */
-    padding: 1rem; /* Add padding inside each item */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 0.5rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .user-list-item:first-child {
